@@ -40,7 +40,7 @@ COPY packaging/rpmlint--ignore-unused-rpmlintrc.patch .
 RUN (cd $(python3 -c 'import site; print(site.getsitepackages()[-1])') &&                    \
      patch -p1 &&                                                                            \
      rm -f rpmlint/__pycache__/{cli,lint}.*.pyc) < rpmlint--ignore-unused-rpmlintrc.patch && \
-    rm -f  rpmlint--ignore-unused-rpmlintrc.patch
+    rm -f rpmlint--ignore-unused-rpmlintrc.patch
 
 ARG CB0
 RUN dnf -y upgrade && \
