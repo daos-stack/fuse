@@ -1,10 +1,10 @@
 %global fuse2ver 2.9.7
 %global fuse2sver 2
-%global fuse3ver 3.10.2
+%global fuse3ver 3.3.0
 
 Name:		fuse
 Version:	%{fuse2ver}
-Release:	15.01%{?dist}
+Release:	15.9%{?dist}
 Summary:	File System in Userspace (FUSE) v2 utilities
 License:	GPL+
 URL:		http://fuse.sf.net
@@ -22,6 +22,10 @@ Patch4:		fuse-3.2.1-no-dev.patch
 Patch5:		fusermount-don-t-feed-escaped-commas-into-mount-opti.patch
 Patch6:		buffer_size.patch
 Patch7:		fuse-3.10.4-fix-test-failure.patch
+Patch8:		0001-Synchronize-fuse_kernel.h.patch
+Patch9:		0002-fuse_lowlevel-Add-max_pages-support-384.patch
+Patch10:	0003-Allow-caching-symlinks-in-kernel-page-cache.-551.patch
+Patch11:	0004-Add-support-for-in-kernel-readdir-caching.patch
 
 Requires:	which
 Conflicts:	filesystem < 3
@@ -112,6 +116,11 @@ pushd lib%{name}-%{name}-%{fuse3ver}
 %patch1 -p1 -b .add_parentheses
 %patch4 -p1 -b .nodev
 %patch7 -p1 -b .test_fail
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+
 popd
 
 # fuse 2
@@ -242,8 +251,11 @@ rm -f %{buildroot}/usr/lib/udev/rules.d/99-fuse3.rules
 %{_includedir}/fuse3/
 
 %changelog
-* Mon Aug 22 2022 Brian J. Murrell <brian.murrell@intel.com> - 2.9.7-15.01
-- Update fuse3 to 3.10.2
+* Mon May 30 2022 Pavel Reichl <preichl@redhat.com> - 2.9.7-15.9
+- Back-port max_pages support,
+- caching symlinks in kernel page cache,
+- and in-kernel readdir caching
+- Fixed rhbz#2080000
 
 * Wed Feb 23 2022 Pavel Reichl <preichl@redhat.com> - 2.9.7-15
 - Fix missing dependency of fuse3 on fuse3-libs

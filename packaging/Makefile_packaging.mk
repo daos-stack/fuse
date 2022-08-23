@@ -406,6 +406,9 @@ docker_chrootbuild:
 	    exit 1;                                                        \
 	fi
 
+mockbuild: $(SRPM)
+	mock -r $(CHROOT_NAME) $(MOCK_OPTIONS) $<
+
 rpmlint: $(SPEC)
 	rpmlint --ignore-unused-rpmlintrc $<
 
