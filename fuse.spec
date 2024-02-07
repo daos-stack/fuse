@@ -265,7 +265,7 @@ rm -f %{buildroot}/usr/lib/udev/rules.d/99-fuse3.rules
 %{_includedir}/fuse3/
 
 %changelog
-* Fri Feb 02 2024 Pavel Reichl <preichl@redhat.com> - 2.9.7-18
+* Fri Feb 02 2024 Pavel Reichl <preichl@redhat.com> - 2.9.7-17.1
 - Advertise support of FUSE_PARALLEL_DIROPS to kernel
 - Fixes RHEL-19149
 
