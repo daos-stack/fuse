@@ -7,14 +7,12 @@ This tells the kernel that parallel lookup/readdir operations are
 supported. This is enabled by default but was not passed to the kernel
 so you always get the synchronized version.
 ---
- lib/fuse_lowlevel.c | 2 ++
+ lib/fuse_lowlevel.c |    2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/lib/fuse_lowlevel.c b/lib/fuse_lowlevel.c
-index fdef193bd..ea985360d 100644
 --- a/lib/fuse_lowlevel.c
 +++ b/lib/fuse_lowlevel.c
-@@ -2141,6 +2141,8 @@ void do_init(fuse_req_t req, fuse_ino_t nodeid, const void *inarg)
+@@ -2093,6 +2093,8 @@ void do_init(fuse_req_t req, fuse_ino_t
  		outargflags |= FUSE_ASYNC_DIO;
  	if (se->conn.want & FUSE_CAP_WRITEBACK_CACHE)
  		outargflags |= FUSE_WRITEBACK_CACHE;

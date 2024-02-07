@@ -30,12 +30,8 @@ Patch12:	0005-BZ_217095_Modify-structures-in-libfuse-to-handle-flags-beyond-rhel
 Patch13:	0006-BZ_2171095.patch
 Patch14:	0007-BZ_2171095-cap.patch
 Patch15:	0008-BZ_217095-libfuse-add-feature-flag-for-expire-only.patch
-
-# DAOS patches
-# https://issues.redhat.com/browse/RHEL-19149
-# https://github.com/libfuse/libfuse/pull/861
-# https://github.com/libfuse/libfuse/commit/c9905341ea34ff9acbc11b3c53ba8bcea35eeed8
-Patch100:	0009-RHEL-19149-Pass-FUSE_PARALLEL_DIROPS-to-kernel.patch
+Patch16:	fuse-3.17.0-Pass-FUSE_PARALLEL_DIROPS-to-kernel-861.patch
+Patch17:	fuse-3.17.0-Don-t-set-FUSE_CAP_PARALLEL_DIROPS-by-default.patch
 
 Requires:	which
 Conflicts:	filesystem < 3
@@ -134,7 +130,10 @@ pushd lib%{name}-%{name}-%{fuse3ver}
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
-%patch100 -p1
+%patch16 -p1
+%patch17 -p1
+
+
 
 popd
 
@@ -266,8 +265,9 @@ rm -f %{buildroot}/usr/lib/udev/rules.d/99-fuse3.rules
 %{_includedir}/fuse3/
 
 %changelog
-* Wed Jan 24 2024 Brian J. Murrell <brian.murrell@intel.com> - 2.9.7-17.1
-- Add patch 0009-RHEL-19149-Pass-FUSE_PARALLEL_DIROPS-to-kernel.patch
+* Fri Feb 02 2024 Pavel Reichl <preichl@redhat.com> - 2.9.7-18
+- Advertise support of FUSE_PARALLEL_DIROPS to kernel
+- Fixes RHEL-19149
 
 * Thu Mar 23 2023 Pavel Reichl <preichl@redhat.com> - 2.9.7-17
 - Add feature_notify_inode_expire_only
