@@ -1,8 +1,13 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
 # these are all from the upstream specfile
-addFilter(r'fuse3?.x86_64: E: setuid-binary /usr/bin/fusermount3? root 4755')
-addFilter('fuse.x86_64: W: package-with-huge-docs:')
-addFilter(r'fuse3?.x86_64: E: non-standard-executable-perm /usr/bin/fusermount3? 4755')
-addFilter(r'fuse3?.x86_64: W: no-manual-page-for-binary (fusermount3?|ulockmgr_server|mount.fuse3?)')
-addFilter(r'fuse3?-devel.x86_64: W: no-documentation')
-addFilter('fuse3.x86_64: E: missing-call-to-setgroups-before-setuid /usr/sbin/mount.fuse3')
-addFilter('fuse-common.x86_64: W: description-shorter-than-summary')
+addFilter(r'fuse3?\.x86_64: E: setuid-binary /usr/bin/fusermount3? root 4755')
+addFilter('fuse\.x86_64: W: package-with-huge-docs:')
+addFilter(r'fuse3?\.x86_64: E: non-standard-executable-perm /usr/bin/fusermount3? 4755')
+addFilter(r'fuse3?\.x86_64: W: no-manual-page-for-binary (fusermount3?|ulockmgr_server|mount\.fuse3?)')
+addFilter(r'fuse3?-devel\.x86_64: W: no-documentation')
+addFilter(r'fuse3\.x86_64: E: missing-call-to-setgroups-before-setuid /usr/sbin/mount\.fuse3')
+addFilter(r'fuse-common\.x86_64: W: description-shorter-than-summary')
+addFilter(r'fuse\.x86_64: W: package-with-huge-docs')
+addFilter(r'fuse-common\.x86_64: E: no-binary')
