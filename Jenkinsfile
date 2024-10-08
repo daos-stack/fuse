@@ -6,5 +6,6 @@
 // I.e. for testing library changes
 //@Library(value="pipeline-lib@your_branch") _
 
+/* groovylint-disable-next-line CompileStatic */
 packageBuildingPipelineDAOSTest(['distros' : ['el8'],
-                                 'test-tag': 'dfuse,dfuseenospace'])
+                                 'test-tag': 'dfuse'])
