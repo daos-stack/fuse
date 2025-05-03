@@ -113,13 +113,13 @@ Common files for FUSE v2 and FUSE v3.
 
 # fuse 3
 pushd lib%{name}-%{name}-%{fuse3ver}
-%patch1 -p1 -b .add_parentheses
-%patch4 -p1 -b .nodev
-%patch7 -p1 -b .test_fail
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%patch -P 1 -p1 -b .add_parentheses
+%patch -P 4 -p1 -b .nodev
+%patch -P 7 -p1 -b .test_fail
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
 
 popd
 
@@ -128,10 +128,10 @@ pushd lib%{name}-%{name}-%{fuse2ver}
 ./makeconf.sh
 #disable device creation during build/install
 sed -i 's|mknod|echo Disabled: mknod |g' util/Makefile.in
-%patch2 -p1 -b .add_parentheses
-%patch3 -p1 -b .conflictfix
-%patch5 -p1 -b .escaped_commas
-%patch6 -p1 -b .buffer_size
+%patch -P 2 -p1 -b .add_parentheses
+%patch -P 3 -p1 -b .conflictfix
+%patch -P 5 -p1 -b .escaped_commas
+%patch -P 6 -p1 -b .buffer_size
 popd
 
 %build
