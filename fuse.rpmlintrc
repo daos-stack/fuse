@@ -6,3 +6,6 @@ addFilter(r'fuse3?.x86_64: W: no-manual-page-for-binary (fusermount3?|ulockmgr_s
 addFilter(r'fuse3?-devel.x86_64: W: no-documentation')
 addFilter('fuse3.x86_64: E: missing-call-to-setgroups-before-setuid /usr/sbin/mount.fuse3')
 addFilter('fuse-common.x86_64: W: description-shorter-than-summary')
+addFilter('E: spelling-error .* pgk')
+addFilter('E: spelling-error .* Devel')
+addFilter('E: spelling-error .* utilitie')
